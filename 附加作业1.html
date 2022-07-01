@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <!-- 1.请补全JavaScript代码，要求实现对象参数的深拷贝并返回拷贝之后的新对象 -->
+  <script type="text/javascript">
+    // 1.在Map对象中获取当前参数对象，如果能获取到，则说明这里为循环引用并返回Map对象中该参数对象的值。
+    // 2.如果在Map对象中没有获取到对应的值，则保存该参数对象到Map中，作为标记。
+    // 3.根据该参数的数据类型是否为数组创建新对象。
+    // 4.遍历该对象参数，将每一项递归调用该函数本身的返回值赋给新对象。
+    const _completeDeepClone = (target, map = new Map()) => {
+      // 补全代码
+      if (map.get(target)) return map.get(target);
+      map.set(target, true);
+      const cloneTarget = Array.isArray(target) ? [] : {};
+      for (prop in target) {
+        if (target.hasOwnProperty(prop)) {
+          cloneTarget[prop] = _completeDeepClone(target[prop], map);
+        }
+      }
+      return cloneTarget;
+    };
+  </script>
+</html>

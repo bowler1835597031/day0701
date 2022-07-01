@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 2. 模拟实现instanceof -->
+  </body>
+  <script>
+    function instanceofObj(a, b) {
+      // 模拟 a instanceof b
+      // spring instanceof Student  //true
+      let prototypeB = b.prototype; //取 b 的显示原型
+      let protoA = a.__proto__; //取 a 的隐式原型
+      let state = false;
+      while (true) {
+        if (protoA == null) {
+          //可能是 undefined
+          state = false;
+          break;
+        }
+        if (prototypeB === protoA) {
+          state = true;
+          break;
+        }
+        protoA = protoA.__proto__; //若本次查找无结果，则沿着原型链向上查找
+      }
+      return state;
+    }
+    console.log(instanceofObj([], Array)); //true
+  </script>
+</html>
