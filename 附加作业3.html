@@ -8,6 +8,9 @@
   </head>
   <body></body>
   <script>
+    function fn() {
+      console.log(this);
+    }
     const obj = {
       name: 'test',
       a() {
@@ -23,14 +26,15 @@
     };
     obj.a();
     obj.b();
-    //14
+    //17
     //     ƒ a() {
     //     console.log(this.a);
     //     setTimeout(function () {
     //       console.log(this.a);
     //     }, 1000);
     //   }
-    //20   obj
-    //16   undefined
+    //23   obj
+    //12   window
+    //19   undefined
   </script>
 </html>
